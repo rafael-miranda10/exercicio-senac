@@ -6,9 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Flunt" Version="1.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\senac.application\Senac.Application.csproj" />
+    <ProjectReference Include="..\Senac.Infra.Data\Senac.Infra.Data.csproj" />
+    <ProjectReference Include="..\Senac.Infra.IoC\Senac.Infra.IoC.csproj" />
   </ItemGroup>
 
 </Project>

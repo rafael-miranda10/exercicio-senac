@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Senac.Infra.Data.Context;
+using Senac.Infra.IoC;
+using Senac.API.Mapper;
+using Microsoft.OpenApi.Models;
 
 namespace senac.API
 {
@@ -25,7 +24,24 @@ namespace senac.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<SenacContext>(c => c.UseSqlServer(Configuration.GetConnectionString("SenacSQLServer")));
+            DependencyInjectorSenac.Registrar(services);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new SenacMappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            //Aplicando documentação com Swagger
+            services.AddSwaggerGen(x => {
+                x.SwaggerDoc("V1", new OpenApiInfo { Title = "Senac", Version = "V1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +59,10 @@ namespace senac.API
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/V1/swagger.json", "Senac - V1");
+            });
         }
     }
 }
