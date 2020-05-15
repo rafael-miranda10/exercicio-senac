@@ -23,8 +23,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Senac.Application", "senac.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Senac.Domain", "Senac.Domain\Senac.Domain.csproj", "{D1BE1CE9-B152-4665-BE99-355CFCEE7AD3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Tests", "5 - Tests", "{2952D79A-9CD2-419E-BB65-54E9BDB0EAFD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Senac.Infra.Data", "Senac.Infra.Data\Senac.Infra.Data.csproj", "{9896D4EB-9061-4E88-BBAA-6F1D6C719D53}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Senac.Infra.IoC", "Senac.Infra.IoC\Senac.Infra.IoC.csproj", "{9BB2CB34-79B2-43FD-B4C6-804121383E9B}"

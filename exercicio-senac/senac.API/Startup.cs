@@ -40,7 +40,7 @@ namespace senac.API
 
             //Aplicando documentação com Swagger
             services.AddSwaggerGen(x => {
-                x.SwaggerDoc("V1", new OpenApiInfo { Title = "Senac", Version = "V1" });
+                x.SwaggerDoc("V1", new OpenApiInfo { Title = "Senac - Rafael", Version = "V1" });
             });
         }
 
@@ -61,8 +61,9 @@ namespace senac.API
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("/swagger/V1/swagger.json", "Senac - V1");
+                c.SwaggerEndpoint("/swagger/V1/swagger.json", "Senac - Rafael  V1");
             });
+
         }
     }
 }

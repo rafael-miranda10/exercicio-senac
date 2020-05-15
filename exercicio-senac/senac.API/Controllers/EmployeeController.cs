@@ -11,7 +11,7 @@ namespace Senac.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController : ControllerBase
+    public class EmployeeController : MainController
     {
         private readonly IEmployeeAppService _employeeAppService;
         private readonly IMapper _mapper;
@@ -26,25 +26,25 @@ namespace Senac.API.Controllers
         [HttpPost]
         public IActionResult AddEmployee(EmployeeRequest request)
         {
-            var employee = _mapper.Map<EmployeeRequest, Employee>(request);
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            if (!employee.Notifications.Any())
+            try
             {
-                try
-                {
-                    var result = _employeeAppService.AddEmployee(employee);
-                    var employeeResponse = _mapper.Map<Employee, EmployeeResponse>(result);
-                    return Ok(employeeResponse);
-                }
-                catch (Exception ex)
-                {
-                    return BadRequest($"Houve um problema interno com o servidor. Entre em contato com o Administrador do sistema caso o problema persista. Erro interno: {ex.Message}");
-                }
+                var employee = _mapper.Map<EmployeeRequest, Employee>(request);
+
+                if (employee.Notifications.Any()) return CustomResponse(employee.Notifications);
+
+                var result = _employeeAppService.AddEmployee(employee);
+                var employeeResponse = _mapper.Map<Employee, EmployeeResponse>(result);
+
+                if (employeeResponse.Valid) return CustomResponse(employeeResponse);
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest(new { errors = employee.Notifications });
+                AdicionarErroProcessamento("Ops! Algo não deu certo. Aguarde um instante e tente novamente, caso o erro persista entre em contato com o administrador do sistema.");
+                return CustomExceptionResponse();
             }
+            return CustomResponse();
         }
     }
 }
