@@ -17,10 +17,11 @@ namespace Senac.Infra.Data.Repositories
         {
             _context = context;
         }
-        public void AddCompany(Company company)
+        public Company AddCompany(Company company)
         {
             _context.Company.Add(company);
             _context.SaveChanges();
+            return company;
         }
 
         public IEnumerable<Company> GetAllCompany()

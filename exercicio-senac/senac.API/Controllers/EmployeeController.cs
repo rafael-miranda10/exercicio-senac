@@ -34,7 +34,6 @@ namespace Senac.API.Controllers
                 {
                     var result = _employeeAppService.AddEmployee(employee);
                     var employeeResponse = _mapper.Map<Employee, EmployeeResponse>(result);
-                    //return Ok(new { success = true });
                     return Ok(employeeResponse);
                 }
                 catch (Exception ex)

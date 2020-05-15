@@ -1,4 +1,5 @@
-﻿using Senac.Domain.Interfaces.Repositories;
+﻿using Senac.Domain.Entities;
+using Senac.Domain.Interfaces.Repositories;
 using Senac.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -14,27 +15,27 @@ namespace Senac.Domain.Services
             _employeePositionRepository = employeePositionRepository;
         }
 
-        public void AddEmployeePosition(Entities.EmployeePosition employeePosition)
+        public EmployeePosition AddEmployeePosition(EmployeePosition employeePosition)
         {
-            _employeePositionRepository.AddEmployeePosition(employeePosition);
+            return _employeePositionRepository.AddEmployeePosition(employeePosition);
         }
 
-        public IEnumerable<Entities.EmployeePosition> GetAllEmployeePosition()
+        public IEnumerable<EmployeePosition> GetAllEmployeePosition()
         {
            return _employeePositionRepository.GetAllEmployeePosition();
         }
 
-        public Entities.EmployeePosition GetEmployeePositionById(Guid id)
+        public EmployeePosition GetEmployeePositionById(Guid id)
         {
             return _employeePositionRepository.GetEmployeePositionById(id);
         }
 
-        public void RemoveEmployeePosition(Entities.EmployeePosition employeePosition)
+        public void RemoveEmployeePosition(EmployeePosition employeePosition)
         {
             _employeePositionRepository.RemoveEmployeePosition(employeePosition);
         }
 
-        public void UpdateEmployeePosition(Entities.EmployeePosition employeePosition)
+        public void UpdateEmployeePosition(EmployeePosition employeePosition)
         {
             _employeePositionRepository.UpdateEmployeePosition(employeePosition);
         }

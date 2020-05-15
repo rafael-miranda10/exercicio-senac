@@ -6,7 +6,7 @@ namespace Senac.Application.Interfaces
 {
     public interface IEmployeePositionAppService
     {
-        void AddEmployeePosition(EmployeePosition employeePosition);
+        EmployeePosition AddEmployeePosition(EmployeePosition employeePosition);
         void UpdateEmployeePosition(EmployeePosition employeePosition);
         void RemoveEmployeePosition(EmployeePosition employeePosition);
         IEnumerable<EmployeePosition> GetAllEmployeePosition();

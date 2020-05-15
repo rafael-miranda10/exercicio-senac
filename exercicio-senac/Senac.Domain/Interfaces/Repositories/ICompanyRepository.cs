@@ -7,7 +7,7 @@ namespace Senac.Domain.Interfaces.Repositories
 {
     public interface ICompanyRepository
     {
-        void AddCompany(Company company);
+        Company AddCompany(Company company);
         void UpdateCompany(Company company);
         void RemoveCompany(Company company);
         IEnumerable<Company> GetAllCompany();

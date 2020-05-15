@@ -15,9 +15,9 @@ namespace Senac.Application.Apps
             _employeePositionService = employeePositionService;
         }
 
-        public void AddEmployeePosition(EmployeePosition employeePosition)
+        public EmployeePosition AddEmployeePosition(EmployeePosition employeePosition)
         {
-            _employeePositionService.AddEmployeePosition(employeePosition);
+           return _employeePositionService.AddEmployeePosition(employeePosition);
         }
 
         public IEnumerable<EmployeePosition> GetAllEmployeePosition()

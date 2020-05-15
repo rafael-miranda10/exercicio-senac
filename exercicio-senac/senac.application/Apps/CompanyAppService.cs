@@ -15,9 +15,9 @@ namespace Senac.Application.Apps
         {
             _companyService = companyService;
         }
-        public void AddCompany(Company company)
+        public Company AddCompany(Company company)
         {
-            _companyService.AddCompany(company);
+           return _companyService.AddCompany(company);
         }
 
         public IEnumerable<Company> GetAllCompany()
