@@ -7,7 +7,7 @@ namespace Senac.Domain.Entities
     {
         protected EmployeePosition() { }
 
-        public EmployeePosition(string description, double salary, int referenceNumber)
+        public EmployeePosition(string description, decimal salary, int referenceNumber)
         {
             Description = description;
             Salary = salary;
@@ -23,7 +23,7 @@ namespace Senac.Domain.Entities
         }
 
         public string Description { get; private set; }
-        public double Salary { get; private set; }
+        public decimal Salary { get; private set; }
         public int ReferenceNumber { get; private set; }
     }
 
