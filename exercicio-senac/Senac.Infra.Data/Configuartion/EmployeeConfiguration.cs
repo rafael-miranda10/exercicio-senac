@@ -14,6 +14,12 @@ namespace Senac.Infra.Data.Configuartion
             builder.HasKey(x => x.Id);
 
             //Mapeando objetos de valor
+            builder.OwnsOne<Name>(x => x.Name, cb => {
+                cb.Property(x => x.FirstName).HasMaxLength(50).HasColumnName("FirstName").IsRequired();
+                cb.Property(x => x.LastName).HasMaxLength(50).HasColumnName("LastName").IsRequired();
+                cb.ToTable("Employee");
+            });
+
             builder.OwnsOne<Document>(x => x.Document, cb => {
                 cb.Property(x => x.Number).HasMaxLength(50).HasColumnName("DocNumber").IsRequired();
                 cb.Property(x => x.Type).HasColumnName("DocType").IsRequired();
