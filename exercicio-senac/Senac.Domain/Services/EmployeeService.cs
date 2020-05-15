@@ -18,6 +18,7 @@ namespace Senac.Domain.Services
 
         public void AddEmployee(Employee employee)
         {
+            employee.GenerateRegisterCode();
             _employeeRepository.AddEmployee(employee);
         }
 

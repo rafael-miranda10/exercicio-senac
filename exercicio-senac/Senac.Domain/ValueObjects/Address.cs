@@ -4,7 +4,7 @@ namespace Senac.Domain.ValueObjects
 {
     public class Address : ValueObject
     {
-        public Address()
+        protected Address()
         {
 
         }
