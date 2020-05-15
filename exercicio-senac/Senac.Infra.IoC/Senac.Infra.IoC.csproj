@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\senac.application\Senac.Application.csproj" />
     <ProjectReference Include="..\Senac.Domain\Senac.Domain.csproj" />
     <ProjectReference Include="..\Senac.Infra.Data\Senac.Infra.Data.csproj" />
   </ItemGroup>

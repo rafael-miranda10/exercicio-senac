@@ -18,10 +18,11 @@ namespace Senac.Infra.Data.Repositories
             _context = context;
         }
 
-        public void AddEmployee(Employee employee)
+        public Employee AddEmployee(Employee employee)
         {
             _context.Employee.Add(employee);
             _context.SaveChanges();
+            return employee;
         }
 
         public IEnumerable<Employee> GetAllEmployee()

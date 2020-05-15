@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using Senac.API.Models.Request;
 using Senac.API.Models.Response;
 using Senac.API.Models.ValueObjects;
 using Senac.Domain.Entities;
 using Senac.Domain.ValueObjects;
+using System;
 
 namespace Senac.API.Mapper
 {
@@ -31,9 +33,10 @@ namespace Senac.API.Mapper
             CreateMap<EmailUI, Email>();
             CreateMap<AddressUI, Address>();
             CreateMap<DocumentUI, Document>();
-            CreateMap<EmployeeResponse, Employee>();
-            CreateMap<CompanyResponse, Company>();
-            CreateMap<EmployeePositionResponse, EmployeePosition>();
+            CreateMap<EmployeeRequest, Employee>()
+                .ForMember(d => d.Id, m => m.MapFrom(s => Guid.NewGuid()));
+            CreateMap<CompanyRequest, Company>();
+            CreateMap<EmployeePositionRequest, EmployeePosition>();
         }
     }
 }

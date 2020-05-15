@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Senac.API.Models.Request;
+using Senac.API.Models.Response;
 using Senac.Application.Interfaces;
 using Senac.Domain.Entities;
 using System;
@@ -31,8 +32,10 @@ namespace Senac.API.Controllers
             {
                 try
                 {
-                    _employeeAppService.AddEmployee(employee);
-                    return Ok(new { success = true });
+                    var result = _employeeAppService.AddEmployee(employee);
+                    var employeeResponse = _mapper.Map<Employee, EmployeeResponse>(result);
+                    //return Ok(new { success = true });
+                    return Ok(employeeResponse);
                 }
                 catch (Exception ex)
                 {

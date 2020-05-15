@@ -16,10 +16,10 @@ namespace Senac.Domain.Services
             _employeeRepository = employeeRepository;
         }
 
-        public void AddEmployee(Employee employee)
+        public Employee AddEmployee(Employee employee)
         {
             employee.GenerateRegisterCode();
-            _employeeRepository.AddEmployee(employee);
+           return _employeeRepository.AddEmployee(employee);
         }
 
         public IEnumerable<Employee> GetAllEmployee()

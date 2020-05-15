@@ -16,9 +16,9 @@ namespace Senac.Application.Apps
             _employeeService = employeeService;
         }
 
-        public void AddEmployee(Employee employee)
+        public Employee AddEmployee(Employee employee)
         {
-            _employeeService.AddEmployee(employee);
+           return _employeeService.AddEmployee(employee);
         }
 
         public IEnumerable<Employee> GetAllEmployee()

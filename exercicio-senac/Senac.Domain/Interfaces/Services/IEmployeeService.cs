@@ -7,7 +7,7 @@ namespace Senac.Domain.Interfaces.Services
 {
     public interface IEmployeeService
     {
-        void AddEmployee(Employee employee);
+        Employee AddEmployee(Employee employee);
         void UpdateEmployee(Employee employee);
         void RemoveEmployee(Employee employee);
         IEnumerable<Employee> GetAllEmployee();

@@ -7,7 +7,7 @@ namespace Senac.Domain.Interfaces.Repositories
 {
     public interface IEmployeeRepository
     {
-        void AddEmployee(Employee employee);
+        Employee AddEmployee(Employee employee);
         void UpdateEmployee(Employee employee);
         void RemoveEmployee(Employee employee);
         IEnumerable<Employee> GetAllEmployee();
