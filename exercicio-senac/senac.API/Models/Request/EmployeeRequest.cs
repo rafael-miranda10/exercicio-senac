@@ -1,4 +1,5 @@
 ﻿using Senac.API.Models.ValueObjects;
+using System;
 
 namespace Senac.API.Models.Request
 {
@@ -13,9 +14,11 @@ namespace Senac.API.Models.Request
             Email = email;
             Address = address;
         }
+        public Guid Id { get; set; }
         public NameUI Name { get;  set; }
         public DocumentUI Document { get;  set; }
         public EmailUI Email { get;  set; }
         public AddressUI Address { get;  set; }
+        public string RegisterCode { get; set; }
     }
 }

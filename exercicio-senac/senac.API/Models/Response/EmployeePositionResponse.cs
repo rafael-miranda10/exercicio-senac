@@ -3,7 +3,7 @@ using System;
 
 namespace Senac.API.Models.Response
 {
-    public class EmployeePositionResponse : Notifiable
+    public class EmployeePositionResponse 
     {
         protected EmployeePositionResponse() { }
 

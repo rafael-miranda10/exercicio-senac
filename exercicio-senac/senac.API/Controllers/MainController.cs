@@ -76,5 +76,10 @@ namespace Senac.API.Controllers
         {
             Erros.Clear();
         }
+
+        protected void MessageException()
+        {
+            AdicionarErroProcessamento("Ops! Algo não deu certo. Aguarde um instante e tente novamente, caso o erro persista entre em contato com o administrador do sistema.");
+        }
     }
 }

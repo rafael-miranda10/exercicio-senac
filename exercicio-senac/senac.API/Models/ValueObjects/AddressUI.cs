@@ -2,7 +2,7 @@
 
 namespace Senac.API.Models.ValueObjects
 {
-    public class AddressUI : Notifiable
+    public class AddressUI 
     {
         protected AddressUI(){}
 

@@ -51,8 +51,7 @@ namespace Senac.Infra.Data.Repositories
 
         public void UpdateCompany(Company company)
         {
-            _context.Company.Attach(company);
-            _context.Entry(company).State = EntityState.Modified;
+            _context.Company.Update(company);
             _context.SaveChanges();
         }
     }

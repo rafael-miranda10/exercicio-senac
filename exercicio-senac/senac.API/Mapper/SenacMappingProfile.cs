@@ -34,7 +34,7 @@ namespace Senac.API.Mapper
             CreateMap<AddressUI, Address>();
             CreateMap<DocumentUI, Document>();
             CreateMap<EmployeeRequest, Employee>()
-                .ForMember(d => d.Id, m => m.MapFrom(s => Guid.NewGuid()));
+                .ForMember(d => d.Id, m => m.MapFrom(s => (s.Id == Guid.Empty || s.Id == null) ? Guid.NewGuid() : s.Id));
             CreateMap<CompanyRequest, Company>();
             CreateMap<EmployeePositionRequest, EmployeePosition>();
         }

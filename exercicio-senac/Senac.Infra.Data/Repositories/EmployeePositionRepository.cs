@@ -43,8 +43,7 @@ namespace Senac.Infra.Data.Repositories
 
         public void UpdateEmployeePosition(EmployeePosition employeePosition)
         {
-            _context.EmployeePosition.Attach(employeePosition);
-            _context.Entry(employeePosition).State = EntityState.Modified;
+            _context.EmployeePosition.Update(employeePosition);
             _context.SaveChanges();
         }
     }

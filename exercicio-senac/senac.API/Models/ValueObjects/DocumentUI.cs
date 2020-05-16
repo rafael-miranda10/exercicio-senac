@@ -2,7 +2,7 @@
 
 namespace Senac.API.Models.ValueObjects
 {
-    public class DocumentUI : Notifiable
+    public class DocumentUI 
     {
         protected DocumentUI() { }
 

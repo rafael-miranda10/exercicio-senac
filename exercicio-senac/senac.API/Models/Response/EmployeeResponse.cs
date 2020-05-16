@@ -4,7 +4,7 @@ using System;
 
 namespace Senac.API.Models.Response
 {
-    public class EmployeeResponse : Notifiable
+    public class EmployeeResponse 
     {
         protected EmployeeResponse() { }
 
