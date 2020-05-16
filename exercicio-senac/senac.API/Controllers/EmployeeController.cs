@@ -60,7 +60,9 @@ namespace Senac.API.Controllers
                 var employee = _mapper.Map<EmployeeRequest, Employee>(request);
                 if (employee.Notifications.Any()) return CustomResponse(employee.Notifications);
                 _employeeAppService.UpdateEmployee(employee);
-                return CustomResponse(employee);
+
+                var employeeResponse = _mapper.Map<Employee, EmployeeResponse>(employee);
+                return CustomResponse(employeeResponse);
             }
             catch (Exception ex)
             {
@@ -121,7 +123,7 @@ namespace Senac.API.Controllers
         {
             try
             {
-                var employeeDocument = _mapper.Map<DocumentUI, Document>(new DocumentUI(number, (int)DocumentEnumUI.CPF));
+                var employeeDocument = _mapper.Map<DocumentResponse, Document>(new DocumentResponse(number, (int)DocumentEnumUI.CPF));
                 if (employeeDocument.Notifications.Any()) return CustomResponse(employeeDocument.Notifications);
 
                 var result = _employeeAppService.GetEmployeeByDocument(employeeDocument);

@@ -2,11 +2,11 @@
 
 namespace Senac.API.Models.ValueObjects
 {
-    public class AddressUI 
+    public class AddressResponse 
     {
-        protected AddressUI(){}
+        protected AddressResponse(){}
 
-        public AddressUI(string street, string number, string neighborhood, string city, string state)
+        public AddressResponse(string street, string number, string neighborhood, string city, string state)
         {
             Street = street;
             Number = number;

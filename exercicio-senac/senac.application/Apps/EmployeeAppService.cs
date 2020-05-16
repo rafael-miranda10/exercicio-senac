@@ -43,7 +43,9 @@ namespace Senac.Application.Apps
 
         public void UpdateEmployee(Employee employee)
         {
-            _employeeService.UpdateEmployee(employee);
+            var RegisterCode = GetEmployeeById(employee.Id).RegisterCode;
+            var newEmployee = new Employee(employee.Id, employee.Name, employee.Document, employee.Email, employee.Address, RegisterCode);
+            _employeeService.UpdateEmployee(newEmployee);
         }
     }
 }

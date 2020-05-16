@@ -40,6 +40,7 @@ namespace Senac.Infra.Data.Repositories
         public Employee GetEmployeeById(Guid id)
         {
             return _context.Employee
+                .AsNoTracking()
                 .Where(x => x.Id == id)
                 .FirstOrDefault();
         }

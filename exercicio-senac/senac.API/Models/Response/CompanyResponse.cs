@@ -8,8 +8,8 @@ namespace Senac.API.Models.Response
     {
         protected CompanyResponse() { }
 
-        public CompanyResponse(Guid id, DocumentUI document, EmailUI email,
-                               AddressUI address, string companyName, string fantasyName)
+        public CompanyResponse(Guid id, DocumentResponse document, EmailResponse email,
+                               AddressResponse address, string companyName, string fantasyName)
         {
             Id = id;
             Email = email;
@@ -22,8 +22,8 @@ namespace Senac.API.Models.Response
         public Guid Id { get; set; }
         public string CompanyName { get; set; }
         public string FantasyName { get; set; }
-        public DocumentUI Document { get; set; }
-        public EmailUI Email { get; set; }
-        public AddressUI Address { get; set; }
+        public DocumentResponse Document { get; set; }
+        public EmailResponse Email { get; set; }
+        public AddressResponse Address { get; set; }
     }
 }

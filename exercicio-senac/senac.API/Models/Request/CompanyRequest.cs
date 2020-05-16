@@ -6,7 +6,7 @@ namespace Senac.API.Models.Request
     {
         protected CompanyRequest() { }
 
-        public CompanyRequest(DocumentUI document, EmailUI email, AddressUI address)
+        public CompanyRequest(DocumentRequest document, EmailRequest email, AddressRequest address)
         {
             Document = document;
             Email = email;
@@ -15,8 +15,8 @@ namespace Senac.API.Models.Request
 
         public string CompanyName { get; set; }
         public string FantasyName { get; set; }
-        public DocumentUI Document { get; set; }
-        public EmailUI Email { get; set; }
-        public AddressUI Address { get; set; }
+        public DocumentRequest Document { get; set; }
+        public EmailRequest Email { get; set; }
+        public AddressRequest Address { get; set; }
     }
 }

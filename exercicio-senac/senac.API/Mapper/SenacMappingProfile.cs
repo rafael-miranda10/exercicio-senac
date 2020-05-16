@@ -18,10 +18,10 @@ namespace Senac.API.Mapper
 
         private void DomainToResponse()
         {
-            CreateMap<Name, NameUI>();
-            CreateMap<Email, EmailUI>();
-            CreateMap<Address, AddressUI>();
-            CreateMap<Document, DocumentUI>();
+            CreateMap<Name, NameResponse>();
+            CreateMap<Email, EmailResponse>();
+            CreateMap<Address, AddressResponse>();
+            CreateMap<Document, DocumentResponse>();
             CreateMap<Employee, EmployeeResponse>();
             CreateMap<Company, CompanyResponse>();
             CreateMap<EmployeePosition, EmployeePositionResponse>();
@@ -29,10 +29,10 @@ namespace Senac.API.Mapper
 
         private void RequestToDomain()
         {
-            CreateMap<NameUI, Name>();
-            CreateMap<EmailUI, Email>();
-            CreateMap<AddressUI, Address>();
-            CreateMap<DocumentUI, Document>();
+            CreateMap<NameRequest, Name>();
+            CreateMap<EmailRequest, Email>();
+            CreateMap<AddressRequest, Address>();
+            CreateMap<DocumentRequest, Document>();
             CreateMap<EmployeeRequest, Employee>()
                 .ForMember(d => d.Id, m => m.MapFrom(s => (s.Id == Guid.Empty || s.Id == null) ? Guid.NewGuid() : s.Id));
             CreateMap<CompanyRequest, Company>();

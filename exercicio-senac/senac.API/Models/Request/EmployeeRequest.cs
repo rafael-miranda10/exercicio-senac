@@ -7,7 +7,7 @@ namespace Senac.API.Models.Request
     {
         protected EmployeeRequest() { }
 
-        public EmployeeRequest(NameUI name, DocumentUI document, EmailUI email, AddressUI address)
+        public EmployeeRequest(NameRequest name, DocumentRequest document, EmailRequest email, AddressRequest address)
         {
             Name = name;
             Document = document;
@@ -15,10 +15,10 @@ namespace Senac.API.Models.Request
             Address = address;
         }
         public Guid Id { get; set; }
-        public NameUI Name { get;  set; }
-        public DocumentUI Document { get;  set; }
-        public EmailUI Email { get;  set; }
-        public AddressUI Address { get;  set; }
-        public string RegisterCode { get; set; }
+        public NameRequest Name { get;  set; }
+        public DocumentRequest Document { get;  set; }
+        public EmailRequest Email { get;  set; }
+        public AddressRequest Address { get;  set; }
+       // public string RegisterCode { get; set; }
     }
 }

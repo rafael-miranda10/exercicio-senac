@@ -2,11 +2,11 @@
 
 namespace Senac.API.Models.ValueObjects
 {
-    public class NameUI 
+    public class NameResponse 
     {
-        protected NameUI() { }
+        protected NameResponse() { }
 
-        public NameUI(string firstName, string lastName)
+        public NameResponse(string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;

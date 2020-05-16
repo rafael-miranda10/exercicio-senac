@@ -41,7 +41,6 @@ namespace Senac.Infra.Data.Configuartion
             });
 
             builder.Property(x => x.RegisterCode)
-               .IsRequired()
                .HasColumnName("RegisterCode")
                .HasMaxLength(8);
         }

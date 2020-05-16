@@ -2,11 +2,11 @@
 
 namespace Senac.API.Models.ValueObjects
 {
-    public class DocumentUI 
+    public class DocumentResponse 
     {
-        protected DocumentUI() { }
+        protected DocumentResponse() { }
 
-        public DocumentUI(string number, int type)
+        public DocumentResponse(string number, int type)
         {
             Number = number;
             Type = type;

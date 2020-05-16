@@ -2,11 +2,11 @@
 
 namespace Senac.API.Models.ValueObjects
 {
-    public class EmailUI 
+    public class EmailResponse 
     {
-        protected EmailUI() { }
+        protected EmailResponse() { }
 
-        public EmailUI(string address)
+        public EmailResponse(string address)
         {
             Address = address;
         }

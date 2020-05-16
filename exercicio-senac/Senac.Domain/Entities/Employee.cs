@@ -19,6 +19,19 @@ namespace Senac.Domain.Entities
 
             AddNotifications(name, document, email, address);
         }
+
+        public Employee(Guid id, Name name, Document document, Email email, Address address, string registerCode)
+        {
+            Id = id;
+            Name = name;
+            Document = document;
+            Email = email;
+            Address = address;
+            RegisterCode = registerCode;
+
+            AddNotifications(name, document, email, address);
+        }
+
         public Name Name { get; private set; }
         public Document Document { get; private set; }
         public Email Email { get; private set; }
