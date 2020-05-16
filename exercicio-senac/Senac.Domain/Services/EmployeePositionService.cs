@@ -25,7 +25,7 @@ namespace Senac.Domain.Services
            return _employeePositionRepository.GetAllEmployeePosition();
         }
 
-        public EmployeePosition GetEmployeePositionById(Guid id)
+        public EmployeePosition GetEmployeePositionById(int id)
         {
             return _employeePositionRepository.GetEmployeePositionById(id);
         }

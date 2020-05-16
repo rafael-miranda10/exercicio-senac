@@ -12,6 +12,6 @@ namespace Senac.Domain.Interfaces.Services
         void RemoveEmployee(Employee employee);
         IEnumerable<Employee> GetAllEmployee();
         Employee GetEmployeeByDocument(Document document);
-        Employee GetEmployeeById(Guid id);
+        Employee GetEmployeeById(int id);
     }
 }

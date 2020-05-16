@@ -13,6 +13,9 @@ namespace Senac.Infra.Data.Configuartion
 
             builder.HasKey(x => x.Id);
 
+            builder.Property(x => x.Id)
+                .ValueGeneratedOnAdd();
+
             //Mapeando objetos de valor
             builder.OwnsOne<Name>(x => x.Name, cb => {
                 cb.Property(x => x.FirstName).HasMaxLength(50).HasColumnName("FirstName").IsRequired();

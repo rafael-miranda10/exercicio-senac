@@ -9,6 +9,6 @@ namespace Senac.Domain.BaseEntity
         {
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
     }
 }

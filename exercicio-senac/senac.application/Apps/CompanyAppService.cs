@@ -30,7 +30,7 @@ namespace Senac.Application.Apps
             return _companyService.GetCompanyByDocument(document);
         }
 
-        public Company GetCompanyById(Guid id)
+        public Company GetCompanyById(int id)
         {
             return _companyService.GetCompanyById(id);
         }

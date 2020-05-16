@@ -31,7 +31,7 @@ namespace Senac.Application.Apps
             return _employeeService.GetEmployeeByDocument(document);
         }
 
-        public Employee GetEmployeeById(Guid id)
+        public Employee GetEmployeeById(int id)
         {
             return _employeeService.GetEmployeeById(id);
         }

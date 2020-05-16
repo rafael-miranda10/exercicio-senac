@@ -32,7 +32,7 @@ namespace Senac.Domain.Services
             return _employeeRepository.GetEmployeeByDocument(document);
         }
 
-        public Employee GetEmployeeById(Guid id)
+        public Employee GetEmployeeById(int id)
         {
             return _employeeRepository.GetEmployeeById(id);
         }

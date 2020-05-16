@@ -12,6 +12,9 @@ namespace Senac.Infra.Data.Configuartion
 
             builder.HasKey(x => x.Id);
 
+            builder.Property(x => x.Id)
+               .ValueGeneratedOnAdd();
+
             builder.Property(x => x.Description)
                 .IsRequired()
                 .HasColumnName("Description")

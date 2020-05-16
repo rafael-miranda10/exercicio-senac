@@ -13,6 +13,7 @@ namespace Senac.API.Models.Request
             Address = address;
         }
 
+        public int? Id { get; set; }
         public string CompanyName { get; set; }
         public string FantasyName { get; set; }
         public DocumentRequest Document { get; set; }

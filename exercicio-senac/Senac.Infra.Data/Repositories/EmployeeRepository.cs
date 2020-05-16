@@ -37,7 +37,7 @@ namespace Senac.Infra.Data.Repositories
                 .FirstOrDefault();
         }
 
-        public Employee GetEmployeeById(Guid id)
+        public Employee GetEmployeeById(int id)
         {
             return _context.Employee
                 .AsNoTracking()

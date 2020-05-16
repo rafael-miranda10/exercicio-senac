@@ -73,14 +73,8 @@ namespace Senac.API.Controllers
 
         [Route("Remove")]
         [HttpDelete]
-        public ActionResult RemoveEmployee(Guid id)
+        public ActionResult RemoveEmployee(int id)
         {
-            if (id == Guid.Empty)
-            {
-                AdicionarErroProcessamento("O id do funcionário deve ser válido.");
-                return CustomResponse();
-            }
-
             try
             {
                 var employee = _employeeAppService.GetEmployeeById(id);
@@ -123,7 +117,7 @@ namespace Senac.API.Controllers
         {
             try
             {
-                var employeeDocument = _mapper.Map<DocumentResponse, Document>(new DocumentResponse(number, (int)DocumentEnumUI.CPF));
+                var employeeDocument = _mapper.Map<DocumentRequest, Document>(new DocumentRequest(number, (int)DocumentEnumUI.CPF));
                 if (employeeDocument.Notifications.Any()) return CustomResponse(employeeDocument.Notifications);
 
                 var result = _employeeAppService.GetEmployeeByDocument(employeeDocument);
@@ -139,16 +133,10 @@ namespace Senac.API.Controllers
 
         [Route("GetById")]
         [HttpGet]
-        public ActionResult<EmployeeResponse> GetEmployeeById(Guid id)
+        public ActionResult<EmployeeResponse> GetEmployeeById(int id)
         {
             try
             {
-                if (id == Guid.Empty)
-                {
-                    AdicionarErroProcessamento("O id do funcionário deve ser válido.");
-                    return CustomResponse();
-                }
-
                 var result = _employeeAppService.GetEmployeeById(id);
                 if (result == null) return CustomResponse();
 

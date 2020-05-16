@@ -20,7 +20,7 @@ namespace Senac.Domain.Entities
             AddNotifications(name, document, email, address);
         }
 
-        public Employee(Guid id, Name name, Document document, Email email, Address address, string registerCode)
+        public Employee(int id, Name name, Document document, Email email, Address address, string registerCode)
         {
             Id = id;
             Name = name;

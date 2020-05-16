@@ -14,11 +14,10 @@ namespace Senac.API.Models.Request
             Email = email;
             Address = address;
         }
-        public Guid Id { get; set; }
+        public int? Id { get; set; }
         public NameRequest Name { get;  set; }
         public DocumentRequest Document { get;  set; }
         public EmailRequest Email { get;  set; }
         public AddressRequest Address { get;  set; }
-       // public string RegisterCode { get; set; }
     }
 }

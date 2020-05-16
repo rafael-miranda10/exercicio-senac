@@ -25,7 +25,7 @@ namespace Senac.Application.Apps
             return _employeePositionService.GetAllEmployeePosition();
         }
 
-        public EmployeePosition GetEmployeePositionById(Guid id)
+        public EmployeePosition GetEmployeePositionById(int id)
         {
             return _employeePositionService.GetEmployeePositionById(id);
         }

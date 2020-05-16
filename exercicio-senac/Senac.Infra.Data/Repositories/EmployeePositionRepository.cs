@@ -28,7 +28,7 @@ namespace Senac.Infra.Data.Repositories
             return _context.EmployeePosition.AsEnumerable();
         }
 
-        public EmployeePosition GetEmployeePositionById(Guid id)
+        public EmployeePosition GetEmployeePositionById(int id)
         {
             return _context.EmployeePosition
                 .Where(x => x.Id == id)

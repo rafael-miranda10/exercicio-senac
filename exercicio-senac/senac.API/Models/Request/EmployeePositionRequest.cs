@@ -16,6 +16,7 @@ namespace Senac.API.Models.Request
             ReferenceNumber = referenceNumber;
         }
 
+        public int? Id { get; set; }
         public string Description { get; private set; }
         public decimal Salary { get; private set; }
         public int ReferenceNumber { get; private set; }

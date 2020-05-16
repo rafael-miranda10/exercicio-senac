@@ -10,6 +10,6 @@ namespace Senac.Application.Interfaces
         void UpdateEmployeePosition(EmployeePosition employeePosition);
         void RemoveEmployeePosition(EmployeePosition employeePosition);
         IEnumerable<EmployeePosition> GetAllEmployeePosition();
-        EmployeePosition GetEmployeePositionById(Guid id);
+        EmployeePosition GetEmployeePositionById(int id);
     }
 }

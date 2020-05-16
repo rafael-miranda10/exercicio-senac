@@ -36,7 +36,7 @@ namespace Senac.Infra.Data.Repositories
                 .FirstOrDefault();
         }
 
-        public Company GetCompanyById(Guid id)
+        public Company GetCompanyById(int id)
         {
             return _context.Company
                .Where(x => x.Id == id)

@@ -12,6 +12,6 @@ namespace Senac.Application.Interfaces
         void RemoveCompany(Company company);
         IEnumerable<Company> GetAllCompany();
         Company GetCompanyByDocument(Document document);
-        Company GetCompanyById(Guid id);
+        Company GetCompanyById(int id);
     }
 }

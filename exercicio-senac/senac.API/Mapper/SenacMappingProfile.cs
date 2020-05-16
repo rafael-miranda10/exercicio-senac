@@ -33,8 +33,8 @@ namespace Senac.API.Mapper
             CreateMap<EmailRequest, Email>();
             CreateMap<AddressRequest, Address>();
             CreateMap<DocumentRequest, Document>();
-            CreateMap<EmployeeRequest, Employee>()
-                .ForMember(d => d.Id, m => m.MapFrom(s => (s.Id == Guid.Empty || s.Id == null) ? Guid.NewGuid() : s.Id));
+            CreateMap<EmployeeRequest, Employee>();
+               // .ForMember(d => d.Id, m => m.MapFrom(s => (s.Id == Guid.Empty || s.Id == null) ? Guid.NewGuid() : s.Id));
             CreateMap<CompanyRequest, Company>();
             CreateMap<EmployeePositionRequest, EmployeePosition>();
         }

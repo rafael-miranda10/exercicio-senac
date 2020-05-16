@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Senac.Infra.Data.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class INICIAL : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,8 @@ namespace Senac.Infra.Data.Migrations
                 schema: "Senac",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CompanyName = table.Column<string>(maxLength: 100, nullable: false),
                     FantasyName = table.Column<string>(maxLength: 100, nullable: false),
                     DocNumber = table.Column<string>(maxLength: 50, nullable: false),
@@ -37,7 +38,10 @@ namespace Senac.Infra.Data.Migrations
                 schema: "Senac",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(maxLength: 50, nullable: false),
                     DocNumber = table.Column<string>(maxLength: 50, nullable: false),
                     DocType = table.Column<int>(nullable: false),
                     EmailAddress = table.Column<string>(maxLength: 60, nullable: false),
@@ -46,7 +50,7 @@ namespace Senac.Infra.Data.Migrations
                     AddressNeighborhood = table.Column<string>(maxLength: 50, nullable: false),
                     AddressCity = table.Column<string>(maxLength: 50, nullable: false),
                     AddressState = table.Column<string>(maxLength: 50, nullable: false),
-                    RegisterCode = table.Column<string>(maxLength: 8, nullable: false)
+                    RegisterCode = table.Column<string>(maxLength: 8, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -58,7 +62,8 @@ namespace Senac.Infra.Data.Migrations
                 schema: "Senac",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(maxLength: 50, nullable: false),
                     Salary = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
                     ReferenceNumber = table.Column<int>(nullable: false)

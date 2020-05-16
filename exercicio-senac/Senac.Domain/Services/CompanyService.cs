@@ -31,7 +31,7 @@ namespace Senac.Domain.Services
             return _companyRepository.GetCompanyByDocument(document);
         }
 
-        public Company GetCompanyById(Guid id)
+        public Company GetCompanyById(int id)
         {
             return _companyRepository.GetCompanyById(id);
         }
