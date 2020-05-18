@@ -23,7 +23,7 @@ namespace Senac.Infra.Data.Configuartion
             builder.Property(x => x.Salary)
              .IsRequired()
              .HasColumnName("Salary")
-             .HasColumnType("decimal(5,2)");
+             .HasColumnType("decimal(7,2)");
 
             builder.Property(x => x.ReferenceNumber)
              .IsRequired()
