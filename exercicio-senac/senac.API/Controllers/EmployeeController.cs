@@ -149,9 +149,5 @@ namespace Senac.API.Controllers
                 return CustomExceptionResponse();
             }
         }
-
-
-
-
     }
 }
