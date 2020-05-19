@@ -46,6 +46,12 @@ namespace Senac.Infra.Data.Configuartion
             builder.Property(x => x.RegisterCode)
                .HasColumnName("RegisterCode")
                .HasMaxLength(8);
+
+            //Relacionamento
+            builder.HasOne(x => x.Company)
+                .WithMany(c => c.Employees)
+                .HasForeignKey(k => k.CompanyId)
+                .HasPrincipalKey(p => p.Id);
         }
     }
 }

@@ -21,6 +21,11 @@ namespace Senac.Domain.Services
            return _companyRepository.AddCompany(company);
         }
 
+        public IEnumerable<Company> GetACompanyEmployees(int idCompany)
+        {
+            return _companyRepository.GetACompanyEmployees(idCompany);
+        }
+
         public IEnumerable<Company> GetAllCompany()
         {
             return _companyRepository.GetAllCompany();

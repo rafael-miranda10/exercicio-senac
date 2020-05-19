@@ -20,6 +20,11 @@ namespace Senac.Application.Apps
            return _companyService.AddCompany(company);
         }
 
+        public IEnumerable<Company> GetACompanyEmployees(int idCompany)
+        {
+            return _companyService.GetACompanyEmployees(idCompany);
+        }
+
         public IEnumerable<Company> GetAllCompany()
         {
             return _companyService.GetAllCompany();

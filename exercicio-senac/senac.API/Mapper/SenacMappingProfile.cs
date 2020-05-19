@@ -31,10 +31,10 @@ namespace Senac.API.Mapper
         {
             CreateMap<NameRequest, Name>();
             CreateMap<EmailRequest, Email>();
-            CreateMap<AddressRequest, Address>();
+            CreateMap<AddressRequest, Address>()
+                .ForMember(d => d.State, m => m.MapFrom(s => s.State.ToString().ToUpper()));
             CreateMap<DocumentRequest, Document>();
             CreateMap<EmployeeRequest, Employee>();
-               // .ForMember(d => d.Id, m => m.MapFrom(s => (s.Id == Guid.Empty || s.Id == null) ? Guid.NewGuid() : s.Id));
             CreateMap<CompanyRequest, Company>();
             CreateMap<EmployeePositionRequest, EmployeePosition>();
         }

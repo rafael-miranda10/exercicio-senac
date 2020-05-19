@@ -1,4 +1,5 @@
 ﻿using Senac.API.Models.ValueObjects;
+using System.Collections.Generic;
 
 namespace Senac.API.Models.Request
 {
@@ -6,11 +7,26 @@ namespace Senac.API.Models.Request
     {
         protected CompanyRequest() { }
 
-        public CompanyRequest(DocumentRequest document, EmailRequest email, AddressRequest address)
+        public CompanyRequest(DocumentRequest document, EmailRequest email,
+                              AddressRequest address, string companyName, string fantasyName)
         {
-            Document = document;
             Email = email;
             Address = address;
+            Document = document;
+            FantasyName = fantasyName;
+            CompanyName = companyName;
+            Employees = new List<EmployeeRequest>();
+        }
+
+        public CompanyRequest(DocumentRequest document, EmailRequest email, AddressRequest address,
+                              string companyName, string fantasyName,List<EmployeeRequest> employees)
+        {
+            Email = email;
+            Address = address;
+            Document = document;
+            Employees = employees;
+            FantasyName = fantasyName;
+            CompanyName = companyName;
         }
 
         public int? Id { get; set; }
@@ -19,5 +35,6 @@ namespace Senac.API.Models.Request
         public DocumentRequest Document { get; set; }
         public EmailRequest Email { get; set; }
         public AddressRequest Address { get; set; }
+        public ICollection<EmployeeRequest> Employees { get; set; }
     }
 }

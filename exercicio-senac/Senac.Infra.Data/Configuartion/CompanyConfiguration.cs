@@ -47,6 +47,12 @@ namespace Senac.Infra.Data.Configuartion
               .HasColumnName("FantasyName")
               .HasMaxLength(100);
 
+            //Relacionamento
+            builder.HasMany(x => x.Employees)
+                .WithOne(c => c.Company)
+                .HasForeignKey(k => k.CompanyId)
+                .HasPrincipalKey(p => p.Id);
+
         }
     }
 }

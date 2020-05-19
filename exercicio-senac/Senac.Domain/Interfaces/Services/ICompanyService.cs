@@ -11,6 +11,7 @@ namespace Senac.Domain.Interfaces.Services
         void UpdateCompany(Company company);
         void RemoveCompany(Company company);
         IEnumerable<Company> GetAllCompany();
+        IEnumerable<Company> GetACompanyEmployees(int idCompany);
         Company GetCompanyByDocument(Document document);
         Company GetCompanyById(int id);
     }
