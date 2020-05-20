@@ -52,6 +52,11 @@ namespace Senac.Infra.Data.Configuartion
                 .WithMany(c => c.Employees)
                 .HasForeignKey(k => k.CompanyId)
                 .HasPrincipalKey(p => p.Id);
+
+            builder.HasOne(x => x.EmployeePosition)
+                .WithMany(c => c.Employees)
+                .HasForeignKey(k => k.EmployeePositionId)
+                .HasPrincipalKey(p => p.Id);
         }
     }
 }

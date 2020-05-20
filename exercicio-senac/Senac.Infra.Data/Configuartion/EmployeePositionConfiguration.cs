@@ -28,6 +28,12 @@ namespace Senac.Infra.Data.Configuartion
             builder.Property(x => x.ReferenceNumber)
              .IsRequired()
              .HasColumnName("ReferenceNumber");
+
+            //Relacionamento
+            builder.HasMany(x => x.Employees)
+                .WithOne(c => c.EmployeePosition)
+                .HasForeignKey(k => k.EmployeePositionId)
+                .HasPrincipalKey(p => p.Id);
         }
     }
 }
