@@ -15,18 +15,6 @@ namespace Senac.API.Models.Request
             Document = document;
             FantasyName = fantasyName;
             CompanyName = companyName;
-            Employees = new List<EmployeeRequest>();
-        }
-
-        public CompanyRequest(DocumentRequest document, EmailRequest email, AddressRequest address,
-                              string companyName, string fantasyName,List<EmployeeRequest> employees)
-        {
-            Email = email;
-            Address = address;
-            Document = document;
-            Employees = employees;
-            FantasyName = fantasyName;
-            CompanyName = companyName;
         }
 
         public int? Id { get; set; }
@@ -35,6 +23,5 @@ namespace Senac.API.Models.Request
         public DocumentRequest Document { get; set; }
         public EmailRequest Email { get; set; }
         public AddressRequest Address { get; set; }
-        public ICollection<EmployeeRequest> Employees { get; set; }
     }
 }

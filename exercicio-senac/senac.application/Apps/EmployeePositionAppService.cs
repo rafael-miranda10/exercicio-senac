@@ -30,6 +30,16 @@ namespace Senac.Application.Apps
             return _employeePositionService.GetEmployeePositionById(id);
         }
 
+        public EmployeePosition GetEmployeePositionWithEmployees(int idPosition)
+        {
+            return _employeePositionService.GetEmployeePositionWithEmployees(idPosition);
+        }
+
+        public EmployeePosition IncludeEmployeeOnPosition(int idPosition, List<int> employees)
+        {
+            return _employeePositionService.IncludeEmployeeOnPosition(idPosition, employees);
+        }
+
         public void RemoveEmployeePosition(EmployeePosition employeePosition)
         {
             _employeePositionService.RemoveEmployeePosition(employeePosition);

@@ -1,5 +1,4 @@
 ﻿using Senac.Domain.Entities;
-using System;
 using System.Collections.Generic;
 
 namespace Senac.Application.Interfaces
@@ -11,5 +10,7 @@ namespace Senac.Application.Interfaces
         void RemoveEmployeePosition(EmployeePosition employeePosition);
         IEnumerable<EmployeePosition> GetAllEmployeePosition();
         EmployeePosition GetEmployeePositionById(int id);
+        EmployeePosition GetEmployeePositionWithEmployees(int idPosition);
+        EmployeePosition IncludeEmployeeOnPosition(int idPosition, List<int> employees);
     }
 }

@@ -24,12 +24,12 @@ namespace Senac.Infra.Data.Repositories
             return company;
         }
 
-        public IEnumerable<Company> GetACompanyEmployees(int idCompany)
+        public Company GetACompanyEmployees(int idCompany)
         {
             return _context.Company
                  .Include(x => x.Employees)
                  .Where(c => c.Id == idCompany)
-                 .AsEnumerable();
+                 .FirstOrDefault();
         }
 
         public IEnumerable<Company> GetAllCompany()

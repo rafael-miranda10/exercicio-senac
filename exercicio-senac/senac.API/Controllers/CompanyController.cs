@@ -178,13 +178,13 @@ namespace Senac.API.Controllers
 
         [Route("GetCompany-Employees")]
         [HttpGet]
-        public ActionResult<IEnumerable<CompanyResponse>> GetCompanyEmployees(int idCompany)
+        public ActionResult<CompanyResponse> GetCompanyEmployees(int idCompany)
         {
             try
             {
-                var result = _companyAppService.GetACompanyEmployees(idCompany).ToList();
-                var listCompanyResponse = _mapper.Map<List<Company>, List<CompanyResponse>>(result);
-                return CustomResponse(listCompanyResponse);
+                var result = _companyAppService.GetACompanyEmployees(idCompany);
+                var CompanyResponse = _mapper.Map<Company, CompanyResponse>(result);
+                return CustomResponse(CompanyResponse);
             }
             catch (Exception ex)
             {

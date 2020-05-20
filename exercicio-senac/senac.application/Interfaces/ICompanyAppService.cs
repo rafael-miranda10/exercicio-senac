@@ -11,7 +11,7 @@ namespace Senac.Application.Interfaces
         void RemoveCompany(Company company);
         Company RegisterEmployeeInCompany(int idCompany, List<int> employees);
         IEnumerable<Company> GetAllCompany();
-        IEnumerable<Company> GetACompanyEmployees(int idCompany);
+        Company GetACompanyEmployees(int idCompany);
         Company GetCompanyByDocument(Document document);
         Company GetCompanyById(int id);
     }

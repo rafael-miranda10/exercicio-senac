@@ -1,6 +1,8 @@
-﻿using Flunt.Validations;
+﻿using Flunt.Notifications;
+using Flunt.Validations;
 using Senac.Domain.BaseEntity;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Senac.Domain.Entities
 {
@@ -13,6 +15,7 @@ namespace Senac.Domain.Entities
             Description = description;
             Salary = salary;
             ReferenceNumber = referenceNumber;
+            Employees = new List<Employee>();
 
             Verifications(Description, Salary, ReferenceNumber);
         }
@@ -41,6 +44,26 @@ namespace Senac.Domain.Entities
                     .IsGreaterThan(Salary, 0, "EmployeePosition.Salary", "O campo de salário deve ser maior que zero")
                     .IsGreaterThan(ReferenceNumber, 0, "EmployeePosition.Reference", "O campo de número de referencia deve ser maior que zero")
                    );
+        }
+
+        public bool ValidateEmployyeToPosition(Employee employee)
+        {
+            bool employeeStatus = true;
+
+            var exists = Employees.SingleOrDefault(x => x.Document.Number == employee.Document.Number);
+            if (exists != null)
+            {
+                AddNotification(new Notification("EmployeePosition.Employees", $"O funcionário {employee.Name.ToString()} já esta vinculado ao cargo de {Description}."));
+                employeeStatus = false;
+            }
+            else if (employee.EmployeePositionId != null)
+            {
+                AddNotification(new Notification("EmployeePosition.Employees", $"O funcionário {employee.Name.ToString()} não pode pertencer a mais de um cargo."));
+                employeeStatus = false;
+            }
+
+            return employeeStatus;
+
         }
     }
 

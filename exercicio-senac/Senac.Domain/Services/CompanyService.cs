@@ -25,7 +25,7 @@ namespace Senac.Domain.Services
             return _companyRepository.AddCompany(company);
         }
 
-        public IEnumerable<Company> GetACompanyEmployees(int idCompany)
+        public Company GetACompanyEmployees(int idCompany)
         {
             return _companyRepository.GetACompanyEmployees(idCompany);
         }

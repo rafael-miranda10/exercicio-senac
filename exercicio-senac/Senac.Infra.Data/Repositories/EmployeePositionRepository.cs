@@ -31,7 +31,18 @@ namespace Senac.Infra.Data.Repositories
         public EmployeePosition GetEmployeePositionById(int id)
         {
             return _context.EmployeePosition
+                .AsNoTracking()
+                .Include(x => x.Employees)
                 .Where(x => x.Id == id)
+                .FirstOrDefault();
+        }
+
+        public EmployeePosition GetEmployeePositionWithEmployees(int idPosition)
+        {
+            return _context.EmployeePosition
+                .Include(x => x.Employees)
+                   .ThenInclude(Employee => Employee.Company)
+                .Where(ep => ep.Id == idPosition)
                 .FirstOrDefault();
         }
 

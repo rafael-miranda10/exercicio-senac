@@ -10,6 +10,7 @@ namespace Senac.Domain.Interfaces.Repositories
         void UpdateEmployeePosition(EmployeePosition employeePosition);
         void RemoveEmployeePosition(EmployeePosition employeePosition);
         IEnumerable<EmployeePosition> GetAllEmployeePosition();
+        EmployeePosition GetEmployeePositionWithEmployees(int idPosition);
         EmployeePosition GetEmployeePositionById(int id);
     }
 }

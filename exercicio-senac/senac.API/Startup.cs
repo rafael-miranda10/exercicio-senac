@@ -9,6 +9,8 @@ using Senac.Infra.Data.Context;
 using Senac.Infra.IoC;
 using Senac.API.Mapper;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace senac.API
 {
@@ -27,7 +29,18 @@ namespace senac.API
             services.AddDbContext<SenacContext>(c => c.UseSqlServer(Configuration.GetConnectionString("SenacSQLServer")));
             DependencyInjectorSenac.Registrar(services);
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //  services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddMvc(config =>
+            {
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+          .AddJsonOptions(options =>
+          {
+              options.SerializerSettings.DateFormatString = "yyyy-MM-ddTHH:mm:ssZ";
+              options.SerializerSettings.Formatting = Formatting.Indented;
+              options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+              options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+          });
 
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(mc =>
@@ -39,7 +52,8 @@ namespace senac.API
             services.AddSingleton(mapper);
 
             //Aplicando documentação com Swagger
-            services.AddSwaggerGen(x => {
+            services.AddSwaggerGen(x =>
+            {
                 x.SwaggerDoc("V1", new OpenApiInfo { Title = "Senac - Rafael", Version = "V1" });
             });
         }
@@ -60,7 +74,8 @@ namespace senac.API
             app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwagger();
-            app.UseSwaggerUI(c => {
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/swagger/V1/swagger.json", "Senac - Rafael  V1");
             });
 

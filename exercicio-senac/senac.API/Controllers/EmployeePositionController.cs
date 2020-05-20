@@ -46,6 +46,32 @@ namespace Senac.API.Controllers
             }
         }
 
+        [Route("Include-Employee-Position")]
+        [HttpPost]
+        public ActionResult IncludeEmployeePosition(IncludeEmployeePositionRequest request)
+        {
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            try
+            {
+                var positionResult = _employeePositionAppService.IncludeEmployeeOnPosition(request.IdPosition, request.Employees);
+                if (positionResult == null)
+                {
+                    AdicionarErroProcessamento("Não foi possível localizar o cargo pelo id informado.");
+                    return CustomResponse();
+                }
+
+                if (positionResult.Notifications.Any()) return CustomResponse(positionResult.Notifications);
+
+                return CustomResponse();
+            }
+            catch (Exception ex)
+            {
+                MessageException();
+                return CustomExceptionResponse();
+            }
+        }
+
         [Route("Update")]
         [HttpPut]
         public ActionResult UpdateEmployeePosition(EmployeePositionRequest request)
@@ -132,6 +158,22 @@ namespace Senac.API.Controllers
             }
         }
 
+        [Route("GetPosition-Employees")]
+        [HttpGet]
+        public ActionResult<CompanyResponse> GetPositionEmployees(int idPosition)
+        {
+            try
+            {
+                var result = _employeePositionAppService.GetEmployeePositionWithEmployees(idPosition);
+                var positionResponse = _mapper.Map<EmployeePosition, EmployeePositionResponse>(result);
+                return CustomResponse(positionResponse);
+            }
+            catch (Exception ex)
+            {
+                MessageException();
+                return CustomExceptionResponse();
+            }
+        }
 
     }
 }
