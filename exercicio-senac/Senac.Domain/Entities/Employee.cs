@@ -8,15 +8,15 @@ namespace Senac.Domain.Entities
     {
         protected Employee() { }
 
-        public Employee(Name name, Document document, Email email, Address address)
-        {
-            Name = name;
-            Email = email;
-            Address = address;
-            Document = document;
+        //public Employee(Name name, Document document, Email email, Address address)
+        //{
+        //    Name = name;
+        //    Email = email;
+        //    Address = address;
+        //    Document = document;
 
-            AddNotifications(name, document, email, address);
-        }
+        //    AddNotifications(name, document, email, address);
+        //}
 
         public Employee(int id, Name name, Document document, Email email, Address address, string registerCode)
         {
@@ -57,5 +57,6 @@ namespace Senac.Domain.Entities
         {
             RegisterCode = Guid.NewGuid().ToString().Substring(0, 8);
         }
+
     }
 }

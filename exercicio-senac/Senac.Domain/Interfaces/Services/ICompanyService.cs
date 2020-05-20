@@ -1,7 +1,6 @@
 ﻿using Senac.Domain.Entities;
 using Senac.Domain.ValueObjects;
 using System.Collections.Generic;
-using System;
 
 namespace Senac.Domain.Interfaces.Services
 {
@@ -14,5 +13,6 @@ namespace Senac.Domain.Interfaces.Services
         IEnumerable<Company> GetACompanyEmployees(int idCompany);
         Company GetCompanyByDocument(Document document);
         Company GetCompanyById(int id);
+        Company RegisterEmployeeInCompany(int idCompany, List<int> employees);
     }
 }

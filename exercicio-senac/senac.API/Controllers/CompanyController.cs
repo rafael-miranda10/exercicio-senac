@@ -49,6 +49,32 @@ namespace Senac.API.Controllers
             }
         }
 
+        [Route("Register-Employee-Company")]
+        [HttpPost]
+        public ActionResult RegisterEmployyeInCompany(RegisterEmployeeRequest request)
+        {
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            try
+            {
+                var companyResult = _companyAppService.RegisterEmployeeInCompany(request.IdCompany, request.Employees);
+                if (companyResult == null)
+                {
+                    AdicionarErroProcessamento("Não foi possível localizar a empresa pelo id informado.");
+                    return CustomResponse();
+                }
+
+                if (companyResult.Notifications.Any()) return CustomResponse(companyResult.Notifications);
+
+                return CustomResponse();
+            }
+            catch (Exception ex)
+            {
+                MessageException();
+                return CustomExceptionResponse();
+            }
+        }
+
         [Route("Update")]
         [HttpPut]
         public ActionResult UpdateCompany(CompanyRequest request)
@@ -166,6 +192,5 @@ namespace Senac.API.Controllers
                 return CustomExceptionResponse();
             }
         }
-
     }
 }

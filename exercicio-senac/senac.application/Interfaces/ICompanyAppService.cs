@@ -1,6 +1,5 @@
 ﻿using Senac.Domain.Entities;
 using Senac.Domain.ValueObjects;
-using System;
 using System.Collections.Generic;
 
 namespace Senac.Application.Interfaces
@@ -10,6 +9,7 @@ namespace Senac.Application.Interfaces
         Company AddCompany(Company company);
         void UpdateCompany(Company company);
         void RemoveCompany(Company company);
+        Company RegisterEmployeeInCompany(int idCompany, List<int> employees);
         IEnumerable<Company> GetAllCompany();
         IEnumerable<Company> GetACompanyEmployees(int idCompany);
         Company GetCompanyByDocument(Document document);

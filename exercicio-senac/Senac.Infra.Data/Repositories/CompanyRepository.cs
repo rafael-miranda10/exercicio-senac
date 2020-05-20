@@ -26,8 +26,10 @@ namespace Senac.Infra.Data.Repositories
 
         public IEnumerable<Company> GetACompanyEmployees(int idCompany)
         {
-            var query = _context.Company.Include(x => x.Employees).Where(c => c.Id == idCompany).AsEnumerable();
-            return query;
+            return _context.Company
+                 .Include(x => x.Employees)
+                 .Where(c => c.Id == idCompany)
+                 .AsEnumerable();
         }
 
         public IEnumerable<Company> GetAllCompany()
@@ -45,8 +47,10 @@ namespace Senac.Infra.Data.Repositories
         public Company GetCompanyById(int id)
         {
             return _context.Company
-               .Where(x => x.Id == id)
-               .FirstOrDefault();
+                .AsNoTracking()
+                .Include(x => x.Employees)
+                .Where(x => x.Id == id)
+                .FirstOrDefault();
         }
 
         public void RemoveCompany(Company company)

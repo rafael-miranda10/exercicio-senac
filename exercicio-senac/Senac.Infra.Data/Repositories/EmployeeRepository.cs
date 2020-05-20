@@ -33,6 +33,7 @@ namespace Senac.Infra.Data.Repositories
         public Employee GetEmployeeByDocument(Document document)
         {
             return _context.Employee
+                .AsNoTracking()
                 .Where(x => x.Document.Number == document.Number)
                 .FirstOrDefault();
         }

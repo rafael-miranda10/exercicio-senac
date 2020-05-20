@@ -40,6 +40,11 @@ namespace Senac.Application.Apps
             return _companyService.GetCompanyById(id);
         }
 
+        public Company RegisterEmployeeInCompany(int idCompany, List<int> employees)
+        {
+            return _companyService.RegisterEmployeeInCompany(idCompany, employees);
+        }
+
         public void RemoveCompany(Company company)
         {
             _companyService.RemoveCompany(company);
