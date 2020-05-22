@@ -29,7 +29,26 @@ namespace senac.API
             services.AddDbContext<SenacContext>(c => c.UseSqlServer(Configuration.GetConnectionString("SenacSQLServer")));
             DependencyInjectorSenac.Registrar(services);
 
-            //  services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //cors sempre deve vir antes do UseMvc
+            //Nesse projeto optei por permitir tudo no CORS mas é possivel customizar como no exemplo 
+            //services.AddCors(options =>
+            //                options.AddPolicy("AllowSpecific", p => 
+            //                          p.WithOrigins("http://localhost:1233")
+            //                          .WithMethods("GET")
+            //                          .WithHeaders("name")));
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
+            });
 
             services.AddMvc(config =>
             {
@@ -41,6 +60,7 @@ namespace senac.API
               options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
               options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
           });
+
 
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(mc =>
@@ -54,7 +74,17 @@ namespace senac.API
             //Aplicando documentação com Swagger
             services.AddSwaggerGen(x =>
             {
-                x.SwaggerDoc("V1", new OpenApiInfo { Title = "Senac - Rafael", Version = "V1" });
+                x.SwaggerDoc("V1", new OpenApiInfo
+                {
+                    Title = "Exercício Integração",
+                    Version = "V1",
+                    Description = "CRUD de Funcionários, Empresas e Cargos",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Rafael Miranda",
+                        Email = "rafael.miranda@db1.com.br"
+                    }
+                });
             });
         }
 
@@ -72,11 +102,16 @@ namespace senac.API
             }
 
             app.UseHttpsRedirection();
+
+            //cors sempre deve vir antes do UseMvc
+            app.UseCors("AllowAll");
+
             app.UseMvc();
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/V1/swagger.json", "Senac - Rafael  V1");
+                c.SwaggerEndpoint("/swagger/V1/swagger.json", "Exercício Integração");
             });
 
         }
