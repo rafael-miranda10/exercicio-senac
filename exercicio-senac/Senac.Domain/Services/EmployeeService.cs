@@ -18,13 +18,22 @@ namespace Senac.Domain.Services
 
         public Employee AddEmployee(Employee employee)
         {
-            employee.GenerateRegisterCode();
            return _employeeRepository.AddEmployee(employee);
         }
 
         public IEnumerable<Employee> GetAllEmployee()
         {
             return _employeeRepository.GetAllEmployee();
+        }
+
+        public IEnumerable<Employee> GetAllEmployeeWithoutCompany()
+        {
+            return _employeeRepository.GetAllEmployeeWithoutCompany();
+        }
+
+        public IEnumerable<Employee> GetAllEmployeeWithoutPosition(int idCompany)
+        {
+            return _employeeRepository.GetAllEmployeeWithoutPosition(idCompany);
         }
 
         public Employee GetEmployeeByDocument(Document document)

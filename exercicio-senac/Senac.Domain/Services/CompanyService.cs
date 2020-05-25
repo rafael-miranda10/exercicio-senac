@@ -45,6 +45,11 @@ namespace Senac.Domain.Services
             return _companyRepository.GetCompanyById(id);
         }
 
+        public Company GetCompanyByIdWithEmployees(int id)
+        {
+            return _companyRepository.GetCompanyByIdWithEmployees(id);
+        }
+
         public Company RegisterEmployeeInCompany(int idCompany, List<int> employees)
         {
             var company = _companyRepository.GetCompanyById(idCompany);
@@ -55,12 +60,16 @@ namespace Senac.Domain.Services
             {
                 var employee = _employeeRepository.GetEmployeeById(idEmployee);
                 if (company.ValidateEmployeeToCompany(employee))
-                    _employeeRepository.UpdateEmployee(new Employee(employee.Id, employee.Name, employee.Document,
-                        employee.Email, employee.Address, employee.RegisterCode, company.Id, company));
+                {
+                    var newEmployee = new Employee(employee.Id, employee.Name, employee.Document,
+                        employee.Email, employee.Address, employee.RegisterCode, company.Id, company);
+                    newEmployee.GenerateRegisterCode();
+                    _employeeRepository.UpdateEmployee(newEmployee);
+                }
             }
 
-            if(company.Notifications.Any())
-                 company.AddNotification(new Notification("Company.Employees", $"Os funcionários não listados foram vinculados a empresa {company.FantasyName} com sucesso."));
+            if (company.Notifications.Any())
+                company.AddNotification(new Notification("Company.Employees", $"Os funcionários não listados foram vinculados a empresa {company.FantasyName} com sucesso."));
 
             return company;
         }

@@ -14,5 +14,6 @@ namespace Senac.Domain.Interfaces.Repositories
         Company GetACompanyEmployees(int idCompany);
         Company GetCompanyByDocument(Document document);
         Company GetCompanyById(int id);
+        Company GetCompanyByIdWithEmployees(int id);
     }
 }

@@ -53,6 +53,16 @@ namespace Senac.Infra.Data.Repositories
                 .FirstOrDefault();
         }
 
+        public Company GetCompanyByIdWithEmployees(int id)
+        {
+            return _context.Company
+                   .AsNoTracking()
+                   .Include(x => x.Employees)
+                     .ThenInclude(employee => employee.EmployeePosition)
+                    .Where(c => c.Id == id)
+                    .FirstOrDefault();
+        }
+
         public void RemoveCompany(Company company)
         {
             _context.Company.Remove(company);

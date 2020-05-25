@@ -111,6 +111,40 @@ namespace Senac.API.Controllers
             }
         }
 
+        [Route("GetEmployees-Without-Company")]
+        [HttpGet]
+        public ActionResult<IEnumerable<EmployeeResponse>> GetAllEmployeeWithoutCompany()
+        {
+            try
+            {
+                var result = _employeeAppService.GetAllEmployeeWithoutCompany().ToList();
+                var listEmployeeResponse = _mapper.Map<List<Employee>, List<EmployeeResponse>>(result);
+                return CustomResponse(listEmployeeResponse);
+            }
+            catch (Exception ex)
+            {
+                MessageException();
+                return CustomExceptionResponse();
+            }
+        }
+
+        [Route("GetEmployees-Without-Position")]
+        [HttpGet]
+        public ActionResult<IEnumerable<EmployeeResponse>> GetAllEmployeeWithoutPosition(int idCompany)
+        {
+            try
+            {
+                var result = _employeeAppService.GetAllEmployeeWithoutPosition(idCompany).ToList();
+                var listEmployeeResponse = _mapper.Map<List<Employee>, List<EmployeeResponse>>(result);
+                return CustomResponse(listEmployeeResponse);
+            }
+            catch (Exception ex)
+            {
+                MessageException();
+                return CustomExceptionResponse();
+            }
+        }
+
         [Route("GetByDocument")]
         [HttpGet]
         public ActionResult<EmployeeResponse> GetEmployeeByDocument(string number)

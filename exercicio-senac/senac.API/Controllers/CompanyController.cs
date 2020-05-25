@@ -176,6 +176,25 @@ namespace Senac.API.Controllers
             }
         }
 
+        [Route("GetCompany-With-Employees")]
+        [HttpGet]
+        public ActionResult<CompanyResponse> GetCompanyByIdWithEmployees(int id)
+        {
+            try
+            {
+                var result = _companyAppService.GetCompanyByIdWithEmployees(id);
+                if (result == null) return CustomResponse();
+
+                var listCompanyResponse = _mapper.Map<Company, CompanyResponse>(result);
+                return CustomResponse(listCompanyResponse);
+            }
+            catch (Exception ex)
+            {
+                MessageException();
+                return CustomExceptionResponse();
+            }
+        }
+
         [Route("GetCompany-Employees")]
         [HttpGet]
         public ActionResult<CompanyResponse> GetCompanyEmployees(int idCompany)

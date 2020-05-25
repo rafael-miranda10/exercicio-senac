@@ -47,7 +47,7 @@ namespace Senac.Domain.Entities
         {
             bool employeeStatus = true;
 
-            var exists = Employees.SingleOrDefault(x => x.Document.Number == employee.Document.Number);
+            var exists = Employees.SingleOrDefault(x => x.Id == employee.Id);
             if (exists != null)
             {
                 AddNotification(new Notification("Company.Employees", $"O funcionário {employee.Name.ToString()} já existe na {FantasyName}."));

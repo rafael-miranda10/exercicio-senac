@@ -1,6 +1,5 @@
 ﻿using Senac.Domain.Entities;
 using Senac.Domain.ValueObjects;
-using System;
 using System.Collections.Generic;
 
 namespace Senac.Application.Interfaces
@@ -11,6 +10,8 @@ namespace Senac.Application.Interfaces
         void UpdateEmployee(Employee employee);
         void RemoveEmployee(Employee employee);
         IEnumerable<Employee> GetAllEmployee();
+        IEnumerable<Employee> GetAllEmployeeWithoutCompany();
+        IEnumerable<Employee> GetAllEmployeeWithoutPosition(int idCompany);
         Employee GetEmployeeByDocument(Document document);
         Employee GetEmployeeById(int id);
     }

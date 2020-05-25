@@ -26,6 +26,16 @@ namespace Senac.Application.Apps
             return _employeeService.GetAllEmployee();
         }
 
+        public IEnumerable<Employee> GetAllEmployeeWithoutCompany()
+        {
+            return _employeeService.GetAllEmployeeWithoutCompany();
+        }
+
+        public IEnumerable<Employee> GetAllEmployeeWithoutPosition(int idCompany)
+        {
+            return _employeeService.GetAllEmployeeWithoutPosition(idCompany);
+        }
+
         public Employee GetEmployeeByDocument(Document document)
         {
             return _employeeService.GetEmployeeByDocument(document);

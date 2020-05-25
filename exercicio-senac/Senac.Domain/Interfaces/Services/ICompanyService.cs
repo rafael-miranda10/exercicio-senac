@@ -14,5 +14,6 @@ namespace Senac.Domain.Interfaces.Services
         Company GetCompanyByDocument(Document document);
         Company GetCompanyById(int id);
         Company RegisterEmployeeInCompany(int idCompany, List<int> employees);
+        Company GetCompanyByIdWithEmployees(int id);
     }
 }

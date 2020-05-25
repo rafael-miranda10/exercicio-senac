@@ -30,6 +30,22 @@ namespace Senac.Infra.Data.Repositories
             return _context.Employee.AsEnumerable();
         }
 
+        public IEnumerable<Employee> GetAllEmployeeWithoutCompany()
+        {
+            return _context.Employee
+                .Where(x => x.CompanyId == null)
+                .AsEnumerable();
+        }
+
+        public IEnumerable<Employee> GetAllEmployeeWithoutPosition(int idCompany)
+        {
+            return _context.Employee
+                .Include(c => c.Company)
+                .Where(x => x.CompanyId == idCompany &&
+                       x.EmployeePositionId == null)
+                .AsEnumerable();
+        }
+
         public Employee GetEmployeeByDocument(Document document)
         {
             return _context.Employee
