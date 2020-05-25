@@ -21,13 +21,13 @@ namespace Senac.Domain.Tests
         }
 
         [Theory]
-        [InlineData("38402480004")]
-        [InlineData("83952336041")]
-        [InlineData("51198890002")]
-        public void Should_Return_True(string cpf)
+        [InlineData("38402480004", 2)]
+        [InlineData("83952336041", 3)]
+        [InlineData("51198890002", 4)]
+        public void Should_Return_True(string cpf, int id)
         {
             var employeePosition = _fake.GetEmployeePositionFake();
-            var employee = _fake.GetEmployeeFake_With_Params(cpf);
+            var employee = _fake.GetEmployeeFake_With_Params(cpf, id);
             var result = employeePosition.ValidateEmployyeToPosition(employee);
             Assert.True(result);
         }

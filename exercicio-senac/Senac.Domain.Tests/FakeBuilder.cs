@@ -75,13 +75,13 @@ namespace Senac.Domain.Tests
             _employee.GenerateRegisterCode();
             return _employee;
         }
-        public Employee GetEmployeeFake_With_Params(string cpf)
+        public Employee GetEmployeeFake_With_Params(string cpf, int id)
         {
             _employeeName = new Name(EMPLOYEE_NAME, EMPLOYEE_LAST_NAME);
             _employeeDocument = new Document(cpf, (DocumentEnum)DOCUMENT_TYPE);
             _employeeEmail = new Email(EMPLOYEE_EMAIL);
             _employeeAddress = new Address(E_ADDRESS_STREET, E_ADDRESS_NUMBER, E_ADDRESS_NEIGHBORHOOD, E_ADDRESS_CITY, E_ADDRESS_STATE);
-            _employee = new Employee(EMPLOYEE_ID, _employeeName, _employeeDocument, _employeeEmail, _employeeAddress, string.Empty);
+            _employee = new Employee(id, _employeeName, _employeeDocument, _employeeEmail, _employeeAddress, string.Empty);
             _employee.GenerateRegisterCode();
             return _employee;
         }
