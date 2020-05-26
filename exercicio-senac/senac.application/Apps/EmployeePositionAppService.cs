@@ -1,4 +1,5 @@
-﻿using Senac.Application.Interfaces;
+﻿using Flunt.Notifications;
+using Senac.Application.Interfaces;
 using Senac.Domain.Entities;
 using Senac.Domain.Interfaces.Services;
 using System;
@@ -35,9 +36,9 @@ namespace Senac.Application.Apps
             return _employeePositionService.GetEmployeePositionWithEmployees(idPosition);
         }
 
-        public EmployeePosition IncludeEmployeeOnPosition(int idPosition, List<int> employees)
+        public List<Notification> IncludeEmployeeOnPosition(List<Employee> employeesPositions)
         {
-            return _employeePositionService.IncludeEmployeeOnPosition(idPosition, employees);
+            return _employeePositionService.IncludeEmployeeOnPosition(employeesPositions);
         }
 
         public void RemoveEmployeePosition(EmployeePosition employeePosition)

@@ -128,7 +128,7 @@ namespace Senac.API.Controllers
             }
         }
 
-        [Route("GetEmployees-Without-Position")]
+        [Route("Without-Position")]
         [HttpGet]
         public ActionResult<IEnumerable<EmployeeResponse>> GetAllEmployeeWithoutPosition(int idCompany)
         {

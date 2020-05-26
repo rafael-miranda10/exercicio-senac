@@ -1,4 +1,5 @@
-﻿using Senac.Domain.Entities;
+﻿using Flunt.Notifications;
+using Senac.Domain.Entities;
 using System.Collections.Generic;
 
 namespace Senac.Domain.Interfaces.Services
@@ -11,6 +12,6 @@ namespace Senac.Domain.Interfaces.Services
         IEnumerable<EmployeePosition> GetAllEmployeePosition();
         EmployeePosition GetEmployeePositionById(int id);
         EmployeePosition GetEmployeePositionWithEmployees(int idPosition);
-        EmployeePosition IncludeEmployeeOnPosition(int idPosition, List<int> employees);
+        List<Notification> IncludeEmployeeOnPosition(List<Employee> employeesPositions);
     }
 }

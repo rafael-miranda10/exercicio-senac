@@ -39,26 +39,46 @@ namespace Senac.Domain.Services
             return _employeePositionRepository.GetEmployeePositionWithEmployees(idPosition);
         }
 
-        public EmployeePosition IncludeEmployeeOnPosition(int idPosition, List<int> employees)
+        public List<Notification> IncludeEmployeeOnPosition(List<Employee> employeesPositions)
         {
-            var position = _employeePositionRepository.GetEmployeePositionById(idPosition);
-            if (position == null) return null;
+            bool hasError = false;
+            List<Notification> _notifications = new List<Notification>();
 
-            foreach (var idEmployee in employees)
+            foreach (var _employee in employeesPositions)
             {
-                var employee = _employeeRepository.GetEmployeeById(idEmployee);
-                if (position.ValidateEmployyeToPosition(employee))
+                var position = _employeePositionRepository.GetEmployeePositionById(_employee.EmployeePosition.Id);
+                var employee = _employeeRepository.GetEmployeeById(_employee.Id);
+
+                if(position == null)
                 {
-                    _employeeRepository.UpdateEmployee(new Employee(employee.Id, employee.Name, employee.Document,
-                        employee.Email, employee.Address, employee.RegisterCode, employee.CompanyId.Value,
-                        employee.Company,position.Id, position));
+                    _notifications.Add(new Notification("EmployeePosition", $"Não foi possível encontrar o cargo com o id disableBtnAdd: {_employee.EmployeePosition.Id}."));
+                    hasError = true;
                 }
+
+                if (employee == null)
+                {
+                    _notifications.Add(new Notification("EmployeePosition", $"Não foi possível encontrar o funcionário com o id informado: {_employee.Id}."));
+                    hasError = true;
+                }
+
+                if (!hasError)
+                {
+                    if (position.ValidateEmployyeToPosition(employee))
+                    {
+                        _employeeRepository.UpdateEmployee(new Employee(employee.Id, employee.Name, employee.Document,
+                            employee.Email, employee.Address, employee.RegisterCode, employee.CompanyId.Value,
+                            employee.Company, position.Id, position));
+                    }
+                }
+
+                hasError = false;
+                
             }
 
-            if (position.Notifications.Any())
-                position.AddNotification(new Notification("EmployeePosition.Employees", $"Os funcionários não listados foram vinculados ao cargo de  {position.Description} com sucesso."));
+            if (_notifications.Any())
+                _notifications.Add(new Notification("EmployeePosition", $"Os funcionários não listados foram vinculados aos cargos com sucesso."));
 
-            return position;
+            return _notifications;
         }
 
         public void RemoveEmployeePosition(EmployeePosition employeePosition)

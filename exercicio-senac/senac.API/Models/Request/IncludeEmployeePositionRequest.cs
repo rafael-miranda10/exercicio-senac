@@ -6,13 +6,13 @@ namespace Senac.API.Models.Request
     {
         protected IncludeEmployeePositionRequest() { }
 
-        protected IncludeEmployeePositionRequest(int idPosition, List<int> employees)
+        protected IncludeEmployeePositionRequest(int idPosition, int idEmployee)
         {
             IdPosition = idPosition;
-            Employees = employees;
+            IdEmployee = idEmployee;
         }
 
         public int IdPosition { get; set; }
-        public List<int> Employees { get; set; }
+        public int IdEmployee { get; set; }
     }
 }

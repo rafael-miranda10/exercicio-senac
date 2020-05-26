@@ -48,20 +48,17 @@ namespace Senac.API.Controllers
 
         [Route("Include-Employee-Position")]
         [HttpPost]
-        public ActionResult IncludeEmployeePosition(IncludeEmployeePositionRequest request)
+        public ActionResult IncludeEmployeePosition(List<EmployeeRequest> request)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             try
             {
-                var positionResult = _employeePositionAppService.IncludeEmployeeOnPosition(request.IdPosition, request.Employees);
-                if (positionResult == null)
-                {
-                    AdicionarErroProcessamento("Não foi possível localizar o cargo pelo id informado.");
-                    return CustomResponse();
-                }
+                request[0].Id = 1500; request[0].EmployeePosition.Id = 1500;
+                var employeesPositions = _mapper.Map<List<EmployeeRequest>, List<Employee>>(request);
+                var positionResult = _employeePositionAppService.IncludeEmployeeOnPosition(employeesPositions);
 
-                if (positionResult.Notifications.Any()) return CustomResponse(positionResult.Notifications);
+               if (positionResult.Any()) return CustomResponse(positionResult);
 
                 return CustomResponse();
             }
