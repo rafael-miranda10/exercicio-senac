@@ -49,6 +49,7 @@ namespace Senac.Infra.Data.Repositories
             return _context.Company
                 .AsNoTracking()
                 .Include(x => x.Employees)
+                .ThenInclude(employee => employee.EmployeePosition)
                 .Where(x => x.Id == id)
                 .FirstOrDefault();
         }

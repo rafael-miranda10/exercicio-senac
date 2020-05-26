@@ -17,7 +17,7 @@ namespace Senac.API.Models.Response
             Address = address;
             Document = document;
             RegisterCode = registerCode;
-            EmployeePositionResponse = employeePositionResponse;
+            EmployeePosition = employeePositionResponse;
         }
         public int Id { get;  set; }
         public NameResponse Name { get;  set; }
@@ -26,6 +26,6 @@ namespace Senac.API.Models.Response
         public AddressResponse Address { get;  set; }
         public string RegisterCode { get;  set; }
         public CompanyResponse Company { get; set; }
-        public EmployeePositionResponse EmployeePositionResponse { get; set; }
+        public EmployeePositionResponse EmployeePosition { get; set; }
     }
 }

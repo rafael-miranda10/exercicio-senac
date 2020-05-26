@@ -166,8 +166,10 @@ namespace Senac.API.Controllers
                 var result = _companyAppService.GetCompanyById(id);
                 if (result == null) return CustomResponse();
 
-                var listCompanyResponse = _mapper.Map<Company, CompanyResponse>(result);
-                return CustomResponse(listCompanyResponse);
+                var CompanyResponse = _mapper.Map<Company, CompanyResponse>(result);
+                var listEmployees = CompanyResponse.Employees.Where(x => x.EmployeePosition != null).ToList();
+                CompanyResponse.Employees = listEmployees;
+                return CustomResponse(CompanyResponse);
             }
             catch (Exception ex)
             {

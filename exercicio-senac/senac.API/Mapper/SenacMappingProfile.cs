@@ -23,7 +23,7 @@ namespace Senac.API.Mapper
             CreateMap<Address, AddressResponse>();
             CreateMap<Document, DocumentResponse>();
             CreateMap<Employee, EmployeeResponse>()
-                .ForMember(d => d.EmployeePositionResponse, m => m.MapFrom(s => s.EmployeePosition));
+                .ForMember(d => d.EmployeePosition, m => m.MapFrom(s => s.EmployeePosition));
             CreateMap<Company, CompanyResponse>()
                 .ForMember(d => d.Employees, m => m.MapFrom(s => s.Employees)); 
             CreateMap<EmployeePosition, EmployeePositionResponse>();
