@@ -54,7 +54,6 @@ namespace Senac.API.Controllers
 
             try
             {
-                request[0].Id = 1500; request[0].EmployeePosition.Id = 1500;
                 var employeesPositions = _mapper.Map<List<EmployeeRequest>, List<Employee>>(request);
                 var positionResult = _employeePositionAppService.IncludeEmployeeOnPosition(employeesPositions);
 
