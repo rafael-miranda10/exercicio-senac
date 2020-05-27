@@ -47,6 +47,7 @@ namespace Senac.Domain.Tests
 
         //employeePosition
         private const string EP_DESCRIPTION = "Médico Veterinário";
+        private const string EP_DESCRIPTION_INVALID = "Médico Veterinário Médico Veterinário Médico Veterinário Médico Veterinário Médico Veterinário";
         private const decimal EP_SALARY = 4500;
         private const int EP_NUM_REFERENCE = 1;
         private EmployeePosition _employeePosition;
@@ -63,6 +64,29 @@ namespace Senac.Domain.Tests
             _companyAddress = new Address(E_ADDRESS_STREET, ADDRESS_NUMBER, ADDRESS_NEIGHBORHOOD, ADDRESS_CITY, ADDRESS_STATE);
             _company = new Company(_companyDocument, _companyEmail, _companyAddress, COMPANY_NAME, FANTASY_NAME, Employees);
             return _company;
+        }
+
+        public Company GetCompanyOnly()
+        {
+            Employees = new List<Employee>();
+            //company
+            _companyDocument = new Document(DOCUMENT_CNPJ, (DocumentEnum)TYPE_DOCUMENT);
+            _companyEmail = new Email(EMAIL);
+            _companyAddress = new Address(E_ADDRESS_STREET, ADDRESS_NUMBER, ADDRESS_NEIGHBORHOOD, ADDRESS_CITY, ADDRESS_STATE);
+            _company = new Company(_companyDocument, _companyEmail, _companyAddress, COMPANY_NAME, FANTASY_NAME, Employees);
+            return _company;
+        }
+
+        public Employee GetEmployeeWithCompany()
+        {
+            Employees = new List<Employee>();
+            _employeeName = new Name(EMPLOYEE_NAME, EMPLOYEE_LAST_NAME);
+            _employeeDocument = new Document(DOCUMENT_CPF, (DocumentEnum)DOCUMENT_TYPE);
+            _employeeEmail = new Email(EMPLOYEE_EMAIL);
+            _employeeAddress = new Address(E_ADDRESS_STREET, E_ADDRESS_NUMBER, E_ADDRESS_NEIGHBORHOOD, E_ADDRESS_CITY, E_ADDRESS_STATE);
+            _employee = new Employee(2, _employeeName, _employeeDocument, _employeeEmail, _employeeAddress, string.Empty,2, GetCompanyOnly());
+            _employee.GenerateRegisterCode();
+            return _employee;
         }
 
         public Employee GetEmployeeFake()
@@ -103,6 +127,32 @@ namespace Senac.Domain.Tests
             Employees.Add(GetEmployeeFake());
             _employeePosition = new EmployeePosition(EP_DESCRIPTION,EP_SALARY,EP_NUM_REFERENCE,Employees);
             return _employeePosition;
+        }
+
+        public EmployeePosition GetEmployeePositionOnly()
+        {
+            Employees = new List<Employee>();
+            _employeePosition = new EmployeePosition(EP_DESCRIPTION, EP_SALARY, EP_NUM_REFERENCE, Employees);
+            return _employeePosition;
+        }
+
+        public EmployeePosition GetEmployeePositionInvalid()
+        {
+            Employees = new List<Employee>();
+            Employees.Add(GetEmployeeFake());
+            _employeePosition = new EmployeePosition(EP_DESCRIPTION_INVALID, EP_SALARY, EP_NUM_REFERENCE, Employees);
+            return _employeePosition;
+        }
+        public Employee GetEmployeeWithPosition()
+        {
+            Employees = new List<Employee>();
+            _employeeName = new Name(EMPLOYEE_NAME, EMPLOYEE_LAST_NAME);
+            _employeeDocument = new Document(DOCUMENT_CPF, (DocumentEnum)DOCUMENT_TYPE);
+            _employeeEmail = new Email(EMPLOYEE_EMAIL);
+            _employeeAddress = new Address(E_ADDRESS_STREET, E_ADDRESS_NUMBER, E_ADDRESS_NEIGHBORHOOD, E_ADDRESS_CITY, E_ADDRESS_STATE);
+            _employee = new Employee(2, _employeeName, _employeeDocument, _employeeEmail, _employeeAddress, string.Empty, 0, null,5, GetEmployeePositionOnly());
+            _employee.GenerateRegisterCode();
+            return _employee;
         }
     }
 }
