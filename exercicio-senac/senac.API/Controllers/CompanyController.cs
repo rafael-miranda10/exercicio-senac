@@ -85,8 +85,8 @@ namespace Senac.API.Controllers
             {
                 var company = _mapper.Map<CompanyRequest, Company>(request);
                 if (company.Notifications.Any()) return CustomResponse(company.Notifications);
-                _companyAppService.UpdateCompany(company);
 
+                _companyAppService.UpdateCompany(company);
                 var companyResponse = _mapper.Map<Company, CompanyResponse>(company);
                 return CustomResponse(companyResponse);
             }
